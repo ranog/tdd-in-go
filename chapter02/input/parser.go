@@ -1,6 +1,8 @@
 package input
 
-import "github.com/ranog/tdd-in-go/calculator"
+import (
+	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter02/calculator"
+)
 
 type Parser struct {
 	engine    *calculator.Engine
