@@ -33,15 +33,23 @@ func TestAdd(t *testing.T) {
 	defer func() {
 		log.Println("Deferred tearing down.")
 	}()
-	x, y := 2.5, 3.5
-	want := x + y
 	e := calculator.Engine{}
-
-	got := e.Add(x, y)
-
-	if got != want {
-		t.Errorf("Add(%.2f, %.2f) incorrect, got: %.2f, want: %.2f", x, y, got, want)
+	actAssert := func(x, y, want float64) {
+		got := e.Add(x, y)
+		if got != want {
+			t.Errorf("Add(%.2f, %.2f) incorrect, got: %.2f, want: %.2f", x, y, got, want)
+		}
 	}
+	t.Run("positive input", func(t *testing.T) {
+		x, y := 2.5, 3.5
+		want := x + y
+		actAssert(x, y, want)
+	})
+	t.Run("negative input", func(t *testing.T) {
+		x, y := -2.5, -3.5
+		want := x + y
+		actAssert(x, y, want)
+	})
 }
 
 func TestSubtract(t *testing.T) {
