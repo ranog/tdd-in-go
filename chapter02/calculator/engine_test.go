@@ -2,8 +2,28 @@ package calculator_test
 
 import (
 	"github.com/PacktPublishing/Test-Driven-Development-in-Go/chapter02/calculator"
+	"log"
+	"os"
 	"testing"
 )
+
+func TestMain(m *testing.M) {
+	setup()
+
+	e := m.Run()
+
+	teardown()
+
+	os.Exit(e)
+}
+
+func setup() {
+	log.Println("Setting up.")
+}
+
+func teardown() {
+	log.Println("Tearing down.")
+}
 
 func TestAdd(t *testing.T) {
 	x, y := 2.5, 3.5
