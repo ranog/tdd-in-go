@@ -30,6 +30,9 @@ func init() {
 }
 
 func TestAdd(t *testing.T) {
+	defer func() {
+		log.Println("Deferred tearing down.")
+	}()
 	x, y := 2.5, 3.5
 	want := x + y
 	e := calculator.Engine{}
