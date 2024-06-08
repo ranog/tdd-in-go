@@ -25,6 +25,10 @@ func teardown() {
 	log.Println("Tearing down.")
 }
 
+func init() {
+	log.Println("Init setup.")
+}
+
 func TestAdd(t *testing.T) {
 	x, y := 2.5, 3.5
 	want := x + y
